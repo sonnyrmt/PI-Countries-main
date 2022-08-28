@@ -19,12 +19,12 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
-const { loadSave } = require('./src/resources/loadSave')
+const { getCountriesAPI } = require('./src/resources/getCountriesAPI')
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
   server.listen(3001, () => {
-    loadSave();
+    getCountriesAPI();
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
 });

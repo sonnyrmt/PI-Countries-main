@@ -6,12 +6,13 @@ module.exports = (sequelize) => {
   sequelize.define('Activity', {
     ID: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      autoIncrement: true,
+      unique: true,
       primaryKey: true,
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     difficulty: {
       type: DataTypes.INTEGER,

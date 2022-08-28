@@ -1,9 +1,9 @@
 const fetch = require("node-fetch");
 require("dotenv").config();
-const { Country } = require('../db.js');
 const { URL_ALL } = process.env;
+const {Country} = require('../db.js');
 
-const loadSave = async () => {
+const getCountriesAPI = async () => {
   try {
     const response = await fetch(`${URL_ALL}`);
     const allCountries = await response.json();
@@ -45,4 +45,4 @@ const loadSave = async () => {
   }
 };
 
-module.exports = {loadSave}
+module.exports = {getCountriesAPI}
