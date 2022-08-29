@@ -21,7 +21,7 @@ router.get("/", async (req, res) => {
 
     } else {
       const allCountries = await Country.findAll({
-        include: Activity
+        attributes: ['ID', 'name', 'img_url', 'continent']
       });
       res.status(200).json(allCountries);
     }
@@ -33,7 +33,11 @@ router.get("/", async (req, res) => {
 router.get("/:countryID", async (req, res) => {
   const { countryID } = req.params;
   try {
-    const countryByID = await Country.findByPk(countryID.toUpperCase());
+    const countryByID = await Country.findByPk(countryID.toUpperCase(), {
+      attributes: {
+        exclude: ['createdAt', 'updatedAt']
+      }
+    });
     if (!countryByID) res.status(404).json({ msg: `${countryID} Not found` });
 
     res.status(200).json(countryByID);
