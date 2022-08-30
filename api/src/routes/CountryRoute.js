@@ -10,14 +10,16 @@ router.get("/", async (req, res) => {
     if (name) {
       const countryByName = await Country.findAll({
         where: { 
-          name: name.toLowerCase() 
+          name: {
+            [Op.iLike] : name + '%'
+          } 
         },
         include: Activity
       });
 
       countryByName.length
         ? res.status(200).json(countryByName)
-        : res.status(400).json({msg: `${name} does not exist`})
+        : res.status(200).json({msg: `${name} does not exist`})
 
     } else {
       const allCountries = await Country.findAll({

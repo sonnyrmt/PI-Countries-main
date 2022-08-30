@@ -1,14 +1,18 @@
 import style from './Nav.module.css'
-import React, { useState } from 'react';
 import { useDispatch } from "react-redux";
-import { getCountryByName } from "../../redux/actions/actions";
+import { getCountryByName, filterCountry } from "../../redux/actions/actions";
 
 const Nav = () => {
+
   const dispatch = useDispatch();
   const handleChange = (e) => {
     dispatch(getCountryByName(e.target.value))
-  }
-  
+  };
+
+  const handleFilter = (e) => {
+    dispatch(filterCountry(e.target.value));
+  };
+
   return (
     <nav className={style.nav_container}>
       <div className={style.btn_container}>
@@ -17,10 +21,13 @@ const Nav = () => {
       </div>
       <div className={style.input_container}>
         <input type="text" onChange={handleChange}/>
-        <select name="filter" id="filter">
+        <select name="filter" id="filter" onChange={handleFilter}>
           <option value="">Filter</option>
-          <option value="continent">Continent</option>
-          <option value="activity">Activity</option>
+          <option value="Americas">Americas</option>
+          <option value="Asia">Asia</option>
+          <option value="Africa">Africa</option>
+          <option value="Europe">Europe</option>
+          <option value="Oceania">Oceania</option>
         </select>
         <select name="Order" id="order">
           <option value="">Order</option>

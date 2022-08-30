@@ -23,7 +23,7 @@ const Home = () => {
               img={c.img_url}
               continent={c.continent}
             />
-          ))
+          )).slice(0,15)
         : <div>No hay paises</div>
       }
     </div>
