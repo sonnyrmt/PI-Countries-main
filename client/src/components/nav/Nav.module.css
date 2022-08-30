@@ -1,0 +1,23 @@
+.nav_container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn_container h1,h4 {
+  margin: 0;
+  padding: 10px;
+}
+
+.input_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.input_container select,input {
+  margin: 10px;
+}
