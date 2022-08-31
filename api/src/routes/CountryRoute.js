@@ -23,7 +23,7 @@ router.get("/", async (req, res) => {
 
     } else {
       const allCountries = await Country.findAll({
-        attributes: ['ID', 'name', 'img_url', 'continent']
+        attributes: ['ID', 'name', 'img_url', 'continent', 'population']
       });
       res.status(200).json(allCountries);
     }
