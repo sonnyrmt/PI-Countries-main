@@ -5,7 +5,7 @@ import Card from "./cards/Card";
 import style from "./Home.module.css";
 
 const Home = () => {
-  const countries = useSelector((state) => state.countries);
+  const countries = useSelector((state) => state.filterCountries);
 
   const dispatch = useDispatch();
   useEffect(() => {

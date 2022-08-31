@@ -1,11 +1,14 @@
 .nav_container {
   display: flex;
   justify-content: space-between;
+  width: 100%;
+  flex-direction: column;
+  height: auto;
 }
 
 .btn_container {
   display: flex;
-  justify-content: center;
+  width: 100%;
   align-items: center;
 }
 .btn_container h1,h4 {
