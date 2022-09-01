@@ -1,21 +1,31 @@
+import { useState } from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllCountries } from "../../redux/actions/actions";
+import { getAllCountries, pagination } from "../../redux/actions/actions";
 import Card from "./cards/Card";
 import style from "./Home.module.css";
 
 const Home = () => {
-  const countries = useSelector((state) => state.filterCountries);
+  const {page, filtered} = useSelector((state) => state);
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllCountries());
   }, [dispatch]);
 
+  const testClick = (e) => {
+    e ? dispatch(pagination(e.target.value)) : dispatch(pagination(0))
+  }
+
+  const offset = page * 15;
+  const limit = offset + 15;
+  const current = filtered.slice(offset,limit);
+  console.log(current)
+
   return (
     <div className={style.countries}>
-      {countries.length
-        ? countries.map((c) => (
+      {current.length
+        ? current.map((c) => (
             <Card
               key={c.ID}
               id={c.ID}
@@ -23,9 +33,10 @@ const Home = () => {
               img={c.img_url}
               continent={c.continent}
             />
-          )).slice(0,15)
-        : <div>No hay paises</div>
+          ))
+        : <div>no hay pais</div>
       }
+      <button value={1} onClick={testClick}>To page 2</button>
     </div>
   );
 };

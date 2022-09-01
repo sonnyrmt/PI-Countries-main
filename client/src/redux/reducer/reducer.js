@@ -1,14 +1,13 @@
-import {
-  GET_ALL_COUNTRIES,
-  GET_COUNTRY_BY_NAME,
-  FILTER_COUNTRY,
-  ORDER_COUNTRY,
-  ORDER_POPULATION
-} from "../actions/actions";
+import { GET_ALL_COUNTRIES, PAGINATION } from "../actions/actions_vars";
 
 const initialState = {
   countries: [],
-  filterCountries: [],
+  filtered: [],
+  continent_state: "",
+  order_state: "",
+  population_state: "",
+  aux_page : 0,
+  page: 0,
 };
 
 const reducer = (state = initialState, action) => {
@@ -17,74 +16,63 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         countries: action.payload,
-        filterCountries: action.payload
+        filtered: action.payload,
       };
-    };
+    }
 
-    case GET_COUNTRY_BY_NAME: {
+    case PAGINATION: {
       return {
         ...state,
-        filterCountries: action.payload,
+        page: action.page,
       };
+    }
+
+    case 'EMPTY_FILTER': {
+      return {
+        ...state,
+        filtered: state.countries,
+        order_state: "",
+      }
     };
 
-    case FILTER_COUNTRY: {
-      const filtered = state.countries.filter(
-        (c) => c.continent.includes(action.payload),
+    case "FILTER_CONTINENT": {
+      const filtered = state.filtered.filter((c) =>
+        c.continent.includes(action.payload)
       );
+      console.log(action.payload)
+      console.log(filtered)
 
       return {
         ...state,
-        filterCountries: filtered,
-      }     
-    };
+        filtered: filtered.length ? filtered : 'error',
+        continent_state: action.payload,
+        aux_page: state.page,
+        page: filtered.length < 15 ? 0 : state.aux_page,
+      };
+    }
 
-    case ORDER_COUNTRY: {
-      const aux = state.countries.map(c => c);
-      let countryOrder;
+    case 'FILTER_ORDER': {
+      let order;
 
       if(action.payload === 'asc') {
-        countryOrder = aux.sort((a,b) => a.name.localeCompare(b.name));
-        return {
-          ...state,
-          filterCountries: countryOrder
-        }
+        order =  state.filtered.slice().sort((a,b) => a.name.localeCompare(b.name));
       }
       if(action.payload === 'des') {
-        countryOrder = aux.sort((a,b) => b.name.localeCompare(a.name));
-        return {
-          ...state,
-          filterCountries: countryOrder
-        }
+        order =  state.filtered.slice().sort((a,b) => b.name.localeCompare(a.name));
+      }
+      if(action.payload === 'higher') {
+        order = state.filtered.slice().sort((a,b) => b.population - a.population)
+      }
+      if(action.payload === 'lower') {
+        order = state.filtered.slice().sort((a,b) => a.population - b.population)
       }
 
       return {
         ...state,
-        filterCountries: state.countries
+        filtered: order || state.filtered,
+        order_state: action.payload,
       }
-    };
-
-    case ORDER_POPULATION: {
-      const aux = state.countries.map(c => c);
-      let populationOrder;
-
-      if(action.payload === 'higher') {
-        populationOrder= aux.sort((a,b) => b.population - a.population)
-
-        return {
-          ...state,
-          filterCountries: populationOrder
-        }
-      }
-      if(action.payload === 'lower') {
-        populationOrder = aux.sort((a,b) => a.population - b.population)
-
-        return {
-          ...state,
-          filterCountries: populationOrder
-        }
-      }
-    };
+    }
 
     default:
       return state;

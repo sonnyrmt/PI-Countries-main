@@ -5,28 +5,29 @@ const { Activity, Country, Op } = require("../db.js");
 router.get("/", async (req, res) => {
   let { name } = req.query;
 
-
   try {
     if (name) {
       const countryByName = await Country.findAll({
-        where: { 
+        where: {
           name: {
-            [Op.iLike] : name + '%'
-          } 
+            [Op.iLike]: name + "%",
+          },
         },
-        include: Activity
+        include: Activity,
       });
 
-      countryByName.length
+      return countryByName.length
         ? res.status(200).json(countryByName)
-        : res.status(200).json({msg: `${name} does not exist`})
-
-    } else {
-      const allCountries = await Country.findAll({
-        attributes: ['ID', 'name', 'img_url', 'continent', 'population']
-      });
-      res.status(200).json(allCountries);
+        : res.status(200).json({ msg: `${name} does not exist` });
     }
+
+    const allCountries = await Country.findAll({
+        attributes: ["ID", "name", "img_url", "continent", "population"],
+        include: Activity,
+    });
+    
+    return res.status(200).json(allCountries);
+
   } catch (error) {
     res.status(404).json(error);
   }
@@ -37,8 +38,8 @@ router.get("/:countryID", async (req, res) => {
   try {
     const countryByID = await Country.findByPk(countryID.toUpperCase(), {
       attributes: {
-        exclude: ['createdAt', 'updatedAt']
-      }
+        exclude: ["createdAt", "updatedAt"],
+      },
     });
     if (!countryByID) res.status(404).json({ msg: `${countryID} Not found` });
 
