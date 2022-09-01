@@ -1,11 +1,10 @@
-import { GET_ALL_COUNTRIES, PAGINATION } from "../actions/actions_vars";
+import { GET_ALL_COUNTRIES, PAGINATION, EMPTY_FILTER, FILTER_CONTINENT, FILTER_ORDER } from "../actions/actions_vars";
 
 const initialState = {
   countries: [],
   filtered: [],
   continent_state: "",
   order_state: "",
-  population_state: "",
   aux_page : 0,
   page: 0,
 };
@@ -27,7 +26,7 @@ const reducer = (state = initialState, action) => {
       };
     }
 
-    case 'EMPTY_FILTER': {
+    case EMPTY_FILTER: {
       return {
         ...state,
         filtered: state.countries,
@@ -35,7 +34,7 @@ const reducer = (state = initialState, action) => {
       }
     };
 
-    case "FILTER_CONTINENT": {
+    case FILTER_CONTINENT: {
       const filtered = state.filtered.filter((c) =>
         c.continent.includes(action.payload)
       );
@@ -51,7 +50,7 @@ const reducer = (state = initialState, action) => {
       };
     }
 
-    case 'FILTER_ORDER': {
+    case FILTER_ORDER: {
       let order;
 
       if(action.payload === 'asc') {
