@@ -1,6 +1,6 @@
 import style from './Nav.module.css'
 import { useDispatch, useSelector } from "react-redux";
-import { filters } from "../../redux/actions/actions";
+import { filters, getCountryByName, test } from "../../redux/actions/actions";
 import { useState } from 'react';
 
 const Nav = () => {
@@ -8,8 +8,6 @@ const Nav = () => {
   const unique = [...new Map(countries.map(item => [item.continent, item])).values()];
   
   const { continent_state, order_state } = useSelector((state) => state)
-  
-  const [search, setSearch] = useState('');
 
   const [continent, setCotinent] = useState(continent_state);
   const [order, setOrder] = useState(order_state);
@@ -27,7 +25,15 @@ const Nav = () => {
   }
 
   const handleSearch = (e) => {
-    setFilters(e.target.value);
+    if(e.target.value) {
+      dispatch(getCountryByName(e.target.value))
+    } else {
+      if(continent == "" && order == "") {
+        dispatch(test());
+      } else {
+        setFilters(continent, order);
+      }
+    }
   };
 
   const handleContinent = (e) => {

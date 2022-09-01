@@ -15,7 +15,9 @@ const Home = () => {
 
   const offset = page * 15;
   const limit = offset + 15;
-  const current = filtered.slice(offset,limit);
+  let current = filtered.slice(offset,limit);
+
+  if(!current.length) current = filtered.slice((0),limit);
 
   return (
     <div className={style.countries}>

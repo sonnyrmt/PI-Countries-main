@@ -1,4 +1,4 @@
-import { GET_ALL_COUNTRIES, PAGINATION, EMPTY_FILTER, FILTER_CONTINENT, FILTER_ORDER } from "../actions/actions_vars";
+import { GET_ALL_COUNTRIES, PAGINATION, EMPTY_FILTER, FILTER_CONTINENT, FILTER_ORDER, GET_COUNTRY_BY_NAME } from "../actions/actions_vars";
 
 const initialState = {
   countries: [],
@@ -38,15 +38,12 @@ const reducer = (state = initialState, action) => {
       const filtered = state.filtered.filter((c) =>
         c.continent.includes(action.payload)
       );
-      console.log(action.payload)
-      console.log(filtered)
 
       return {
         ...state,
         filtered: filtered.length ? filtered : 'error',
         continent_state: action.payload,
         aux_page: state.page,
-        page: filtered.length < 15 ? 0 : state.aux_page,
       };
     }
 
@@ -70,6 +67,22 @@ const reducer = (state = initialState, action) => {
         ...state,
         filtered: order || state.filtered,
         order_state: action.payload,
+      }
+    }
+
+    case 'test': {
+      return {
+        ...state,
+        filtered: state.countries,
+        page: state.page
+      }
+    }
+
+    case GET_COUNTRY_BY_NAME: {
+
+      return {
+        ...state,
+        filtered: !action.payload.msg ? action.payload : [],
       }
     }
 
