@@ -28,7 +28,7 @@ export const getCountryByName = (name) => async (dispatch) => {
     const json = await res.json();
     dispatch({type: GET_COUNTRY_BY_NAME, payload: json})
   } catch (error) {
-    console.log(error.msg)
+    console.log(error)
   }
 };
 
