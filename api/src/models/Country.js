@@ -33,7 +33,16 @@ module.exports = (sequelize) => {
     },
     population: {
       type: DataTypes.INTEGER,
-    }
+    },
+    currencies: {
+      type: DataTypes.JSON,
+    },
+    flag: {
+      type: DataTypes.STRING,
+    },
+    languages: {
+      type: DataTypes.JSON,
+    },
   }, {
     hooks: {
       beforeCreate: async instance => {

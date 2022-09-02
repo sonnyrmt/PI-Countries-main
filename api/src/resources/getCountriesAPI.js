@@ -18,6 +18,9 @@ const getCountriesAPI = async () => {
         sub_region: c.subregion !== undefined ? c.subregion : "No subregion",
         area: Math.round(c.area),
         population: c.population,
+        currencies: c.currencies == undefined ? 'USD' : c.currencies,
+        flag: c.flag === undefined ? null : c.flag,
+        languages: c.languages === undefined ? null : c.languages,
       };
     });
   
@@ -31,12 +34,12 @@ const getCountriesAPI = async () => {
           capital: c.capital,
           sub_region: c.sub_region,
           area: c.area,
-          population: c.population
+          population: c.population,
+          currencies: c.currencies,
+          flag: c.flag,
+          languages: c.languages,
         }
-      })/* .then(([country, created]) => {
-        console.log(country.toJSON())
-        console.log(created)
-      }) */
+      })
     });
   
     console.log('synchronized db')

@@ -22,7 +22,13 @@ router.get("/", async (req, res) => {
     }
 
     const allCountries = await Country.findAll({
-        attributes: ["ID", "name", "img_url", "continent", "population"],
+        attributes: ["ID",
+          "name", 
+          "img_url",
+          "continent",
+          "currencies",
+          "flag",
+        ],
         include: Activity,
     });
     
