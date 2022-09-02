@@ -1,9 +1,7 @@
 .country_container {
   width: 350px;
   height: 350px;
-  background-color: gray;
   margin: 10px;
-  border-radius: 20px;
 }
 
 .flag_container {
@@ -11,15 +9,24 @@
   height: 200px;
   background-position: center;
   background-size: cover;
-  border-radius: 20px;
 }
 
 
 .flag_container img {
   width: 100%;
   height: 100%;
-  background-color: gainsboro;
   object-fit:cover;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
+}
+
+.infoContainer {
+  background-color: #3a3b3c;
+  height: 150px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.infoContainer h3,h4 {
+  margin: 0;
 }

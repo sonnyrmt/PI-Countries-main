@@ -1,19 +1,18 @@
 .nav_container {
   display: flex;
   justify-content: space-between;
+  padding: 5px 0 15px 0;
   width: 100%;
   flex-direction: column;
   height: auto;
+  background-color: #181818;
 }
 
 .btn_container {
   display: flex;
   width: 100%;
+  justify-content: space-between;
   align-items: center;
-}
-.btn_container h1,h4 {
-  margin: 0;
-  padding: 10px;
 }
 
 .input_container {
@@ -21,6 +20,67 @@
   justify-content: center;
   align-items: center;
 }
-.input_container select,input {
+
+.logoInputContainer {
+  display: flex;
+  margin-left: 40px;
+}
+
+/* container sections end */
+
+.title {
+  font-weight: 700;
+  align-self: center;
+  margin: 0 15px 0 0;
+  padding: 10px;
+}
+
+.activity {
+  justify-self: flex-end;
+  margin-right: 45px;
+  padding: 10px;
+}
+
+.searchBar {
+  padding: 10px 15px;
   margin: 10px;
+  border: none;
+  border-radius: 15px;
+  color: #929292;
+  font-weight: 500;
+  width: 200px;
+  max-width: 250px;
+  background-color: #3a3b3c;
+}
+
+.selectInput {
+  margin: 0;
+  padding: 5px 10px 10px 5px;
+  color: #929292;
+  font-weight: 500;
+  background-color: #3a3b3c;
+  width: 170px;
+  border: none;
+  border-radius: 15px;
+}
+
+.input_bg {
+  background-color: #3a3b3c;
+  border-radius: 50px;
+  display: flex;
+  padding: 5px 35px;
+}
+
+
+.labelAndSelect {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: center;
+  margin: 0 10px;
+}
+
+label {
+  font-weight: bold;
+  margin: 10px 10px 0 10px;
 }

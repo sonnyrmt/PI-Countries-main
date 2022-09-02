@@ -47,25 +47,38 @@ const Nav = () => {
   return (
     <nav className={style.nav_container}>
       <div className={style.btn_container}>
-        <h1>Countries</h1>
-        <h4>Create country</h4>
-        <input type="text" onChange={handleSearch}/>
+        <div className={style.logoInputContainer}>
+          <h1 className={style.title}>Countries.PI</h1>
+          <input placeholder='Search..' className={style.searchBar} type="text" onChange={handleSearch}/>
+        </div>
+        <h4 className={style.activity}>Create activity</h4>
       </div>
       <div className={style.input_container}>
-        <select defaultValue='Choose Continent' name="filter" id="filter" onChange={handleContinent}>
-          <option value="">Choose Continent</option>
-          {unique.map( c => <option key={c.ID} value={c.continent}>{c.continent}</option>)}
-        </select>
-        <select defaultValue='Choose Continent' name="order" id="order" onChange={handleOrder}>
-          <option value="">Choose Order</option>
-          <option value="asc">A-Z</option>
-          <option value="des">Z-A</option>
-          <option value="higher">Higher Population</option>
-          <option value="lower">Lower Population</option>
-        </select>
-        <select name="activities" id="activities">
-          <option value="">No hay actividades</option>
-        </select>
+        <div className={style.input_bg}>
+          <div className={style.labelAndSelect}>
+            <label htmlFor="title-continent">Continent Filter</label>
+            <select className={style.selectInput} defaultValue='Choose Continent' name="filter" id="filter" onChange={handleContinent}>
+              <option value="">Choose One</option>
+              {unique.map( c => <option key={c.ID} value={c.continent}>{c.continent}</option>)}
+            </select>
+          </div>
+          <div className={style.labelAndSelect}>
+            <label htmlFor="title-continent">Order Format</label>
+            <select className={style.selectInput} defaultValue='Choose Continent' name="order" id="order" onChange={handleOrder}>
+              <option value="">Choose Order</option>
+              <option value="asc">A-Z</option>
+              <option value="des">Z-A</option>
+              <option value="higher">Higher Population</option>
+              <option value="lower">Lower Population</option>
+            </select>
+          </div>
+          <div className={style.labelAndSelect}>
+            <label htmlFor="title-activity">Activity Filter</label>
+            <select className={style.selectInput} name="activities" id="activities">
+              <option value="">No activities</option>
+            </select>
+          </div>
+        </div>
       </div>
     </nav>
   );
