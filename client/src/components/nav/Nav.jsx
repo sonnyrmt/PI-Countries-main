@@ -51,7 +51,7 @@ const Nav = () => {
           <h1 className={style.title}>Countries.PI</h1>
           <input placeholder='Search..' className={style.searchBar} type="text" onChange={handleSearch}/>
         </div>
-        <h4 className={style.activity}>Create activity</h4>
+        <button className={style.activity}>Create activity</button>
       </div>
       <div className={style.input_container}>
         <div className={style.input_bg}>
@@ -65,7 +65,7 @@ const Nav = () => {
           <div className={style.labelAndSelect}>
             <label htmlFor="title-continent">Order Format</label>
             <select className={style.selectInput} defaultValue='Choose Continent' name="order" id="order" onChange={handleOrder}>
-              <option value="">Choose Order</option>
+              <option value="">Choose format</option>
               <option value="asc">A-Z</option>
               <option value="des">Z-A</option>
               <option value="higher">Higher Population</option>

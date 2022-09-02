@@ -1,7 +1,7 @@
 .nav_container {
   display: flex;
   justify-content: space-between;
-  padding: 5px 0 15px 0;
+  padding: 10px;
   width: 100%;
   flex-direction: column;
   height: auto;
@@ -13,6 +13,7 @@
   width: 100%;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 15px;
 }
 
 .input_container {
@@ -38,14 +39,19 @@
 .activity {
   justify-self: flex-end;
   margin-right: 45px;
-  padding: 10px;
+  border-radius: 40px;
+  padding: 10px 15px;
+  border: none;
+  background-color: #334EFF;
+  color: white;
+  font-weight: 500;
 }
 
 .searchBar {
   padding: 10px 15px;
   margin: 10px;
   border: none;
-  border-radius: 15px;
+  border-radius: 40px;
   color: #929292;
   font-weight: 500;
   width: 200px;

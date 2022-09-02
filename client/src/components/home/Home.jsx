@@ -29,6 +29,8 @@ const Home = () => {
               name={c.name}
               img={c.img_url}
               continent={c.continent}
+              curr={c.currencies}
+              flag={c.flag}
             />
           ))
         : <div>no hay pais</div>

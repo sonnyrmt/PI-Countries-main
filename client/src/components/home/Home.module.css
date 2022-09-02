@@ -2,6 +2,10 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: 100%;
   background-color: #181818;
+  padding: 20px;
+}
+
+.countries {
+  padding-top: 20px;
 }
