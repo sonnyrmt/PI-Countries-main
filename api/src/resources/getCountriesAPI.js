@@ -7,7 +7,7 @@ const getCountriesAPI = async () => {
   try {
     const response = await fetch(`${URL_ALL}`);
     const allCountries = await response.json();
-  
+    
     const countriesToDB = allCountries.map(c => {
       return {
         ID: c.cca3,
@@ -18,8 +18,8 @@ const getCountriesAPI = async () => {
         sub_region: c.subregion !== undefined ? c.subregion : "No subregion",
         area: Math.round(c.area),
         population: c.population,
-        currencies: c.currencies == undefined ? 'USD' : c.currencies,
-        flag: c.flag === undefined ? null : c.flag,
+        currencies: c.currencies === undefined ? { ANY: {} } : c.currencies,
+        flag: c.flag === undefined ? 'null' : c.flag,
         languages: c.languages === undefined ? null : c.languages,
       };
     });

@@ -27,4 +27,4 @@ conn.sync({ force: true }).then(() => {
     getCountriesAPI();
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
-});
+}).catch(error => console.log(error));
