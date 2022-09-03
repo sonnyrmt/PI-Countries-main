@@ -31,7 +31,7 @@
   width: 35px;
   background-repeat: no-repeat;
   background-position: center;
-  background-color: rgba(0, 0, 0, 0.336);
+  background-color: #272727a1;
   box-shadow: 6px 6px 11px 0px rgba(0,0,0,0.1);
   border: none;
   color: #ffffff;
@@ -73,7 +73,7 @@
 }
 
 .circle_data div {
-  margin-top: -15px;
+  margin-top: 5px;
   padding: 5px;
   display: flex;
   align-items: center;
@@ -82,11 +82,10 @@
 
 .circle_data div span {
   font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  padding: 5px 10px;
-  color: rgba(0, 0, 0, 0.733);
-  background-color: #d1d2d6;
+  font-weight: 600;
+  padding: 7px 10px;
+  color: #198cfe;
+  background-color: #272727;
   box-shadow: 6px 6px 11px 0px rgba(0,0,0,0.1);
   border-radius: 50px;
   /* font-family: 'Rajdhani', sans-serif; */
@@ -94,14 +93,14 @@
 
 .name_country  {
   height: 40px;
-  background-color: rgba(0, 0, 0, 0.336);
+  background-color: #272727;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .name_country h3{
-  font-size: 16px;
+  font-size: 15px;
   text-transform: capitalize;
   padding: 5px 0;
 }
@@ -109,7 +108,7 @@
 .flag_circle {
   display: flex;
   width: auto;
-  height: 60px;
+  height: 40px;
   align-items: flex-end;
   justify-content: space-between;
 }

@@ -5,6 +5,7 @@
   flex-direction: column;
   height: auto;
   background-color: #181818;
+  
 }
 
 .btn_container {
@@ -12,6 +13,9 @@
   width: 100%;
   justify-content: space-between;
   align-items: center;
+  font-family: 'cocogoose';
+  font-size: 25px;
+  letter-spacing: -1px;
   margin-bottom: 15px;
 }
 
@@ -39,7 +43,7 @@
   justify-self: flex-end;
   margin-right: 45px;
   border-radius: 40px;
-  padding: 10px 15px;
+  padding: 15px 15px;
   border: none;
   background-color: #334EFF;
   color: white;
@@ -48,7 +52,7 @@
 
 .searchBar {
   padding: 10px 15px;
-  margin: 10px;
+  margin: 15px;
   border: none;
   border-radius: 40px;
   color: #929292;
@@ -82,10 +86,11 @@
   flex-direction: column;
   align-items: flex-start;
   text-align: center;
+  font-size: 15px;
   margin: 0 10px;
 }
 
 label {
   font-weight: bold;
-  margin: 10px 10px 0 10px;
+  margin: 10px 10px 0 8px;
 }

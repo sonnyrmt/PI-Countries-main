@@ -1,13 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600&display=swap');
 * {
   scrollbar-color: #454a4d #202324;
+}
+
+@font-face {
+  font-family: 'cocogoose';
+  src: url('./fonts/cocogoose.ttf');
 }
 
 .App {
   text-align: center;
   height: 100vh;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Comfortaa', cursive;
   background-color: #181818;
   color: white;
 }

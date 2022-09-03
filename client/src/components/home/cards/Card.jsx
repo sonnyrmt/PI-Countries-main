@@ -12,17 +12,18 @@ const Card = (props) => {
         <img src={props.img} alt="country_flag" />
       </div>
       <div className={style.infoContainer}>
+      <div className={style.name_country}>
+        <h3>{props.name.slice(0,15)}</h3>
+      </div>
         <div className={style.circle_data}>
           <div>
-          <span className={style.country}>{props.id}</span>
+            <span className={style.country}>{props.id}</span>
           </div>
           <div>
           <span className={style.curr}>Currency · {currencie}</span>
           </div>
         </div>
-      <div className={style.name_country}>
-        <h3>{props.name}</h3>
-      </div>
+
       <div className={style.flag_circle}>
         <div className={style.continent_info}>
           <label htmlFor="continent">@Continent:</label>

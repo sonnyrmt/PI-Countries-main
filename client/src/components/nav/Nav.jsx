@@ -48,7 +48,7 @@ const Nav = () => {
     <nav className={style.nav_container}>
       <div className={style.btn_container}>
         <div className={style.logoInputContainer}>
-          <h1 className={style.title}>Countries.PI</h1>
+          <h1 className={style.title}>Maps</h1>
           <input placeholder='Search..' className={style.searchBar} type="text" onChange={handleSearch}/>
         </div>
         <button className={style.activity}>Create activity</button>
