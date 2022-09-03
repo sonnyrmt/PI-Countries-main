@@ -1,0 +1,38 @@
+
+.container_navigation {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.paginator_container {
+  margin-top: 10px;
+  background-color: #3a3b3c;
+  padding: 10px;
+  border-radius: 40px;
+  width: max-content;
+}
+
+.pag_button {
+  border: none;
+  color: white;
+  background-color: transparent;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 10px;
+  border-radius: 25px;
+  
+}
+
+.pag_button:checked {
+  background-color: red;
+
+}
+
+
+.pag_button:hover {
+  background-color: rgba(0, 0, 0, 0.336);
+  transition: background-color 0.5s;
+}
+

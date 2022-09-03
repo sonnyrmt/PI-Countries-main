@@ -1,6 +1,6 @@
 import { pagination } from "../../../redux/actions/actions";
 import { useDispatch } from "react-redux";
-
+import style from './Pagination.module.css'
 
 const Pagination = (props) => {
   const { page, total } = props
@@ -10,21 +10,21 @@ const Pagination = (props) => {
   
   const paginatorArr = [...Array(numberPages).keys()];
 
-  const setPage = (e, value) => {
+  const setPage = (e) => {
     dispatch(pagination(e.target.value));
   }
   return (
-    <div>
-      <button value={0} onClick={setPage}>{'<<'}</button>
-      <button value={page-1} onClick={setPage}>{'<'}</button>
+    <div className={style.container_navigation}>
+    <div className={style.paginator_container}>
+      <button className={style.pag_button} value={0} onClick={setPage}>{'<<'}</button>
+      <button className={style.pag_button} value={page-1} onClick={setPage}>{'<'}</button>
       {paginatorArr.map( i => (
-        <button value={i} key={i} onClick={setPage}>{i+1}</button>
+        <button className={style.pag_button} value={i} key={i} onClick={setPage}>{i+1}</button>
       ))}
-      <button value={page+1} onClick={setPage}>{'>'}</button>
-      <button value={numberPages-1} onClick={setPage}>{'>>'}</button>
+      <button className={style.pag_button} value={page+1} onClick={setPage}>{'>'}</button>
+      <button className={style.pag_button} value={numberPages-1} onClick={setPage}>{'>>'}</button>
     </div>
-
-    
+    </div>
   )
 }
 

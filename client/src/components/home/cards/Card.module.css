@@ -29,10 +29,12 @@
 .more_info {
   height: 35px;
   width: 35px;
+  background-repeat: no-repeat;
+  background-position: center;
   background-color: rgba(0, 0, 0, 0.336);
   box-shadow: 6px 6px 11px 0px rgba(0,0,0,0.1);
   border: none;
-  color: white;
+  color: #ffffff;
   border-radius: 25px;
   margin: 12px;
   cursor: pointer;
@@ -79,20 +81,20 @@
 }
 
 .circle_data div span {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 1px;
   padding: 5px 10px;
-  background-color: #334EFF;
+  color: rgba(0, 0, 0, 0.733);
+  background-color: #d1d2d6;
   box-shadow: 6px 6px 11px 0px rgba(0,0,0,0.1);
   border-radius: 50px;
-  font-family: 'Rajdhani', sans-serif;
+  /* font-family: 'Rajdhani', sans-serif; */
 }
 
 .name_country  {
   height: 40px;
   background-color: rgba(0, 0, 0, 0.336);
-  border-bottom: #334effa8 3px solid;
   display: flex;
   justify-content: center;
   align-items: center;
