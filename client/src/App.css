@@ -16,6 +16,8 @@
   font-family: 'Comfortaa', cursive;
   background-color: #181818;
   color: white;
+  display: flex;
+  flex-direction: column;
 }
 
 .App-logo {

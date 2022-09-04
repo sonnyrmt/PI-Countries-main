@@ -1,8 +1,9 @@
-import { GET_ALL_COUNTRIES, PAGINATION, EMPTY_FILTER, FILTER_CONTINENT, FILTER_ORDER, GET_COUNTRY_BY_NAME } from "../actions/actions_vars";
+import { GET_ALL_COUNTRIES, PAGINATION, EMPTY_FILTER, FILTER_CONTINENT, FILTER_ORDER, GET_COUNTRY_BY_NAME , GET_COUNTRY_BY_ID } from "../actions/actions_vars";
 
 const initialState = {
   countries: [],
   filtered: [],
+  detailed_country: [],
   continent_state: "",
   order_state: "",
   aux_page : 0,
@@ -16,6 +17,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         countries: action.payload,
         filtered: action.payload,
+        page: state.page
       };
     }
 
@@ -70,19 +72,18 @@ const reducer = (state = initialState, action) => {
       }
     }
 
-    case 'test': {
-      return {
-        ...state,
-        filtered: state.countries,
-        page: state.page
-      }
-    }
-
     case GET_COUNTRY_BY_NAME: {
 
       return {
         ...state,
         filtered: !action.payload.msg ? action.payload : [],
+      }
+    }
+
+    case GET_COUNTRY_BY_ID: {
+      return {
+        ...state,
+        detailed_country: action.payload,
       }
     }
 

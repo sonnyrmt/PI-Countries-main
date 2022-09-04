@@ -4,7 +4,8 @@ import {
   EMPTY_FILTER,
   FILTER_CONTINENT,
   FILTER_ORDER,
-  GET_COUNTRY_BY_NAME
+  GET_COUNTRY_BY_NAME,
+  GET_COUNTRY_BY_ID
 } from "./actions_vars";
 
 export const getAllCountries = () => async (dispatch) => {
@@ -17,16 +18,21 @@ export const getAllCountries = () => async (dispatch) => {
   }
 };
 
-export const test = (name) => async (dispatch) => {
-  dispatch({type: 'test'})
-
-}
-
 export const getCountryByName = (name) => async (dispatch) => {
   try {
     const res = await fetch(`http://localhost:3001/countries?name=${name}`);
     const json = await res.json();
     dispatch({type: GET_COUNTRY_BY_NAME, payload: json})
+  } catch (error) {
+    console.log(error)
+  }
+};
+
+export const getCountryByID = (id) => async (dispatch) => {
+  try {
+    const res = await fetch(`http://localhost:3001/countries/${id}`);
+    const json = await res.json();
+    dispatch({ type: GET_COUNTRY_BY_ID, payload: json });
   } catch (error) {
     console.log(error)
   }

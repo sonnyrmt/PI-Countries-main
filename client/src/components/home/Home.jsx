@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
 import { getAllCountries } from "../../redux/actions/actions";
 import Card from "./cards/Card";
 import style from "./Home.module.css";
@@ -7,11 +8,13 @@ import Pagination from "./pagination/Pagination";
 
 const Home = () => {
   const {page, filtered} = useSelector((state) => state);
+  const {pathname} = useLocation();
+
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllCountries());
-  }, [dispatch]);
+  }, [dispatch, pathname]);
 
   const offset = page * 15;
   const limit = offset + 15;
