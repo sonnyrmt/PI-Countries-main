@@ -46,7 +46,9 @@ router.get("/:countryID", async (req, res) => {
     const countryByID = await Country.findByPk(countryID.toUpperCase(), {
       attributes: {
         exclude: ["createdAt", "updatedAt"],
+        
       },
+      include: Activity,
     });
     if (!countryByID) res.status(404).json({ msg: `${countryID} Not found` });
 

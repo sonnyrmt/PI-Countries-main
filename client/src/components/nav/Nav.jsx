@@ -51,11 +51,11 @@ const Nav = () => {
       <div className={style.btn_container}>
         <div className={style.logoInputContainer}>
           <h1 className={style.title}>Maps.pi</h1>
-          {pathname === '/countries' ?
+          {pathname === '/countries' || pathname === '/countries/' ?
           <input placeholder='Search..' className={style.searchBar} type="text" onChange={handleSearch}/>
           : null }
         </div>
-        <button className={style.activity}>{pathname === '/countries' ? 'Create activity' : 'Back'}</button>
+        <button className={style.activity}>{pathname === '/countries' || pathname === '/countries/' ? 'Create activity' : 'Back'}</button>
       </div>
       {pathname === '/countries' ?
         <div className={style.input_container}>

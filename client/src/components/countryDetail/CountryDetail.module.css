@@ -4,14 +4,14 @@
   height: 750px;
   border-radius: 30px;
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
+ /*  align-items: center; */
 }
 
 .banner {
   width: auto;
   display: flex;
+  height: fit-content;
   min-height: 425px;
   background-color: #343435;
   padding: 30px;
@@ -117,4 +117,12 @@
   padding: 5px 10px;
   border-radius: 10px;
   margin-left: 5px;
+}
+
+.cca3 {
+  margin-bottom: 0;
+  margin-left: 10px;
+  text-align: start;
+  font-weight: 600;
+  color: #929292;
 }

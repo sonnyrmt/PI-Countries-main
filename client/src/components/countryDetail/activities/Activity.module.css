@@ -1,0 +1,50 @@
+.activities_container {
+  width: 30%;
+  text-align: start;
+  align-self: flex-start;
+  background-color: #343435;
+  padding: 30px;
+  border-radius: 20px;
+  margin: 20px;
+}
+
+.cards_container{
+  display: flex;
+  flex-direction: row;
+  padding: 10px 0 0 0;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.activities_container h2 {
+  background-color: #272727;
+  padding: 10px;
+  border-radius: 10px;  
+  width: auto;
+  margin-right: 10px;
+  height: fit-content;
+  margin: 0;
+  font-size: 20px;
+}
+
+.activity_name {
+  color: #198cfe;
+  font-weight: 600;
+}
+
+.activity_card {
+  background-color: #272727;
+  width: fit-content;
+  height: auto;
+  border-radius: 20px;
+  margin-left: 0;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 5px 15px;
+}
+
+.activity_card p {
+  margin: 2px 10px;
+  letter-spacing: 1px;
+}

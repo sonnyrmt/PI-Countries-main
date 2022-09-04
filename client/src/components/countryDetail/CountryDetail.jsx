@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getCountryByID } from "../../redux/actions/actions";
 import style from "./CountryDetail.module.css";
+import Activity from './activities/Activity'
 
-const CountryDetail = (props) => {
+const CountryDetail = () => {
   const {
     img_url,
     name,
@@ -16,7 +17,7 @@ const CountryDetail = (props) => {
     population,
     currencies,
     languages,
-    flag,
+    Activities,
   } = useSelector((state) => state.detailed_country);
 
   const cleanLanguages = [];
@@ -63,7 +64,7 @@ const CountryDetail = (props) => {
         </div>
         <div className={style.separator}></div>
         <div className={style.main_info}>
-          <h2 className={style.country_name}>{name}</h2>
+          <h2 className={style.country_name}>{name} - {id}</h2>
           <h4 className={style.info}>Capital: {capital}</h4>
           <h4 className={style.info}>Subregion: {sub_region}</h4>
           <h4 className={style.info}>Continent: {continent}</h4>
@@ -75,7 +76,7 @@ const CountryDetail = (props) => {
                   <span className={style.arrow}>↳</span> {lang}
                 </p>
               ))
-              .slice(0, 2)}
+              .slice(0, 5)}
           </div>
           <div className={style.currencies}>
             <h4 className={style.info}>Currencies :</h4>
@@ -83,12 +84,13 @@ const CountryDetail = (props) => {
               <span className={style.arrow}>↳</span> {currencyName}
             </p>
             <p>
-              <span className={style.arrow}>↳</span> Currency Symbol:  {" "}
+              <span className={style.arrow}>↳</span> Currency Symbol:
           {    <span className={style.symbol}>{symbol}</span>}
             </p>
           </div>
         </div>
       </div>
+      <Activity activity={Activities} />
     </div>
   );
 };
