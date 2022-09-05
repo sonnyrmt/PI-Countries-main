@@ -29,17 +29,21 @@
 .more_info {
   height: 35px;
   width: 35px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: #272727a1;
+  background-color: #272727da;
   box-shadow: 6px 6px 11px 0px rgba(0,0,0,0.1);
-  border: none;
-  color: #ffffff;
   border-radius: 25px;
   margin: 12px;
   cursor: pointer;
 }
 
+.more_info img {
+  transition: transform 0.5s;
+  opacity: 80%;
+}
+
+.more_info img:hover {
+  transform: scale(1.1)
+}
 
 
 .flag_container img {

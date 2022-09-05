@@ -1,3 +1,7 @@
+*{
+  font-weight: 600;
+}
+
 .country_container {
   align-self: center;
   width: 75%;
@@ -5,7 +9,6 @@
   border-radius: 30px;
   display: flex;
   justify-content: center;
- /*  align-items: center; */
 }
 
 .banner {
@@ -94,8 +97,19 @@
   text-decoration: underline wavy 1px #198cfe;
 }
 
+.checkNoCheck {
+  width: 30px;
+  margin-top: 5px;
+  margin-right: 10px;
+  /* background-color: red; */
+}
+
 .green {
   color: #1c912f;
+}
+
+.red {
+  color: #b41e1e;
 }
 
 .carousel_info {

@@ -3,7 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getCountryByID } from "../../redux/actions/actions";
 import style from "./CountryDetail.module.css";
-import Activity from './activities/Activity'
+import Activity from "./activities/Activity";
+import checkmark from "../../assets/img/checkmark.png";
+import crossmark from "../../assets/img/crossmark.png";
 
 const CountryDetail = () => {
   const {
@@ -18,6 +20,7 @@ const CountryDetail = () => {
     currencies,
     languages,
     Activities,
+    independent,
   } = useSelector((state) => state.detailed_country);
 
   const cleanLanguages = [];
@@ -52,40 +55,50 @@ const CountryDetail = () => {
           <img src={img_url} alt="country-flag" />
           <div className={style.carousel_info}>
             <div className={style.population}>
-              <h4 className={style.boxModel}>Population</h4>
-              <h4 className={style.value}>{population}</h4>
+              <div className={style.boxModel}>Population</div>
+              <div className={style.value}>{population}</div>
             </div>
             <div className={style.population}>
-              <h4 className={style.boxModel}>Area </h4>
-              <h4 className={style.value}>{area}</h4>
+              <div className={style.boxModel}>Area </div>
+              <div className={style.value}>{area}</div>
             </div>
-            <h4 className={`${style.boxModel} ${style.green}`}>Independent</h4>
+            <div className={style.population}>
+              <div className={style.boxModel}>Independent</div>
+              <div className={style.checkNoCheck}>
+                <img
+                  src={independent === true ? checkmark : crossmark}
+                  alt="independent"
+                />
+              </div>
+            </div>
           </div>
         </div>
         <div className={style.separator}></div>
         <div className={style.main_info}>
-          <h2 className={style.country_name}>{name} - {id}</h2>
-          <h4 className={style.info}>Capital: {capital}</h4>
-          <h4 className={style.info}>Subregion: {sub_region}</h4>
-          <h4 className={style.info}>Continent: {continent}</h4>
+          <h2 className={style.country_name}>
+            {name} - {id}
+          </h2>
+          <div className={style.info}>Capital: {capital}</div>
+          <div className={style.info}>Continent: {continent}</div>
+          <div className={style.info}>Subregion: {sub_region}</div>
           <div className={style.currencies}>
-            <h4 className={style.info}>Languages :</h4>
+            <div className={style.info}>Official Languages:</div>
             {cleanLanguages
               .map((lang) => (
                 <p key={lang}>
                   <span className={style.arrow}>↳</span> {lang}
                 </p>
               ))
-              .slice(0, 5)}
+              .slice(0, 2)}
           </div>
           <div className={style.currencies}>
-            <h4 className={style.info}>Currencies :</h4>
+            <div className={style.info}>Currencies:</div>
             <p>
               <span className={style.arrow}>↳</span> {currencyName}
             </p>
             <p>
               <span className={style.arrow}>↳</span> Currency Symbol:
-          {    <span className={style.symbol}>{symbol}</span>}
+              {<span className={style.symbol}>{symbol}</span>}
             </p>
           </div>
         </div>

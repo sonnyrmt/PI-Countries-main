@@ -1,5 +1,6 @@
 import style from "./Card.module.css";
 import { Link } from "react-router-dom";
+import info from '../../../assets/img/info.png'
 
 const Card = (props) => {
   let currency = Object.keys(props.curr).toString().slice(0, 3);
@@ -9,7 +10,9 @@ const Card = (props) => {
       <div className={style.flag_container}>
         <div className={style.btn_container}>
           <Link to={`/countries/${props.id}`}>
-            <button className={style.more_info}>✚</button>
+            <div className={style.more_info}>
+              <img src={info} alt="" />
+            </div>
           </Link>
         </div>
         <img src={props.img} alt="country_flag" />
