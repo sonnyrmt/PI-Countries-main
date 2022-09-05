@@ -21,6 +21,7 @@ const getCountriesAPI = async () => {
         currencies: c.currencies === undefined ? { ANY: {} } : c.currencies,
         flag: c.flag === undefined ? 'null' : c.flag,
         languages: c.languages === undefined ? null : c.languages,
+        independent: c.independent === undefined ? null : c.independent 
       };
     });
   
@@ -38,6 +39,7 @@ const getCountriesAPI = async () => {
           currencies: c.currencies,
           flag: c.flag,
           languages: c.languages,
+          independent: c.independent
         }
       })
     });

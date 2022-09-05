@@ -43,6 +43,9 @@ module.exports = (sequelize) => {
     languages: {
       type: DataTypes.JSON,
     },
+    independent: {
+      type: DataTypes.BOOLEAN
+    }
   }, {
     hooks: {
       beforeCreate: async instance => {
