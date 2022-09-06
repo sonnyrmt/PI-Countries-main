@@ -59,7 +59,7 @@ const CountryDetail = () => {
               <div className={style.value}>{population}</div>
             </div>
             <div className={style.population}>
-              <div className={style.boxModel}>Area </div>
+              <div className={style.boxModel}>Area km<sup>2</sup></div>
               <div className={style.value}>{area}</div>
             </div>
             <div className={style.population}>

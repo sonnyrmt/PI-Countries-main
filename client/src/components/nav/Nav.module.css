@@ -30,24 +30,34 @@
   margin-left: 40px;
 }
 
-/* container sections end */
 
 .title {
   font-weight: 700;
   align-self: center;
   margin: 0 15px 0 0;
   padding: 10px;
+  color: white;
+}
+
+.title:link {
+  text-decoration: none;
+}
+
+.title:visited {
+  color: white;
+  text-decoration: none;
 }
 
 .activity {
   justify-self: flex-end;
   margin-right: 45px;
   border-radius: 40px;
-  padding: 15px 15px;
+  padding: 15px;
   border: none;
   background-color: #334EFF;
   color: white;
   font-weight: 500;
+  cursor: pointer;
 }
 
 .searchBar {

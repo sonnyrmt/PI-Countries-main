@@ -1,0 +1,52 @@
+.main_container {
+  height: 100vh;
+  background-image: url(../../assets//img/background.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-family: 'cocogoose';
+  font-size: 100px;
+  z-index: 2;
+}
+
+mark {
+  color: white;
+  background-color: #334EFF;
+  border-radius: 5px;
+  display: inline-block;
+  line-height: 0em;
+  padding-bottom: 0.5em;
+}
+
+.link {
+  text-decoration: none;
+
+}
+
+.containerbtn {
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+h1 {
+  padding: 10px;
+  margin: 30px 0 10px 0;
+}
+
+h2 {
+  text-decoration: none;
+  text-decoration: none;
+  width: fit-content;
+  background-color: #334EFF;
+  padding: 10px 25px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: white;
+}
