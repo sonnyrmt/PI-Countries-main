@@ -5,7 +5,8 @@ import {
   FILTER_CONTINENT,
   FILTER_ORDER,
   GET_COUNTRY_BY_NAME,
-  GET_COUNTRY_BY_ID
+  GET_COUNTRY_BY_ID,
+  MODAL_OPEN
 } from "./actions_vars";
 
 export const getAllCountries = () => async (dispatch) => {
@@ -47,4 +48,8 @@ export const filters = (filters, noFilters) => async (dispatch) => {
 
 export const pagination = (value) => async (dispatch) => {
   dispatch({ type: PAGINATION, page: +value });
+};
+
+export const setModal = (value) => async (dispatch) => {
+  dispatch({type: MODAL_OPEN, payload: value})
 };

@@ -1,6 +1,6 @@
 import style from './Nav.module.css'
 import { useDispatch, useSelector } from "react-redux";
-import { filters, getCountryByName, getAllCountries } from "../../redux/actions/actions";
+import { filters, getCountryByName, getAllCountries, setModal } from "../../redux/actions/actions";
 import { useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 
@@ -46,22 +46,23 @@ const Nav = () => {
     setFilters(continent, e.target.value )
   }
 
+  const handleActivity = () => {
+    dispatch(setModal(true));
+    document.body.style.overflow = "hidden";
+  }
+
   return (
     <nav className={style.nav_container}>
       <div className={style.btn_container}>
         <div className={style.logoInputContainer}>
-          <Link to={'/countries'}>
+          <Link className={style.link} to={'/countries'}>
             <h1 className={style.title}>Maps.pi</h1>
           </Link>
           {pathname === '/countries' || pathname === '/countries/' ?
           <input placeholder='Search..' className={style.searchBar} type="text" onChange={handleSearch}/>
           : null }
         </div>
-        <Link to={pathname === '/countries' || pathname === '/countries/' ? '' : '/countries'}>
-          <button className={style.activity}>{
-            pathname === '/countries' || pathname === '/countries/' ? 'Create activity' : 'Back'}
-          </button>
-        </Link>
+        <button className={style.activity} onClick={handleActivity}>Create Activity</button>
       </div>
       {pathname === '/countries' ?
         <div className={style.input_container}>

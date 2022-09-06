@@ -10,7 +10,6 @@ const Home = () => {
   const {page, filtered} = useSelector((state) => state);
   const {pathname} = useLocation();
 
-
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllCountries());

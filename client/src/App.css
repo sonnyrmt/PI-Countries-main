@@ -5,6 +5,11 @@
   scrollbar-color: #454a4d #202324;
 }
 
+*::selection {
+  background-color: #334eff;
+  border-radius: 5px;
+}
+
 @font-face {
   font-family: 'cocogoose';
   src: url('./assets/fonts/cocogoose.ttf');

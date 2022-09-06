@@ -1,4 +1,4 @@
-import { GET_ALL_COUNTRIES, PAGINATION, EMPTY_FILTER, FILTER_CONTINENT, FILTER_ORDER, GET_COUNTRY_BY_NAME , GET_COUNTRY_BY_ID } from "../actions/actions_vars";
+import { GET_ALL_COUNTRIES, PAGINATION, EMPTY_FILTER, FILTER_CONTINENT, FILTER_ORDER, GET_COUNTRY_BY_NAME , GET_COUNTRY_BY_ID, MODAL_OPEN } from "../actions/actions_vars";
 
 const initialState = {
   countries: [],
@@ -8,6 +8,7 @@ const initialState = {
   order_state: "",
   aux_page : 0,
   page: 0,
+  modal_open: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -84,6 +85,13 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         detailed_country: action.payload,
+      }
+    }
+
+    case MODAL_OPEN: {
+      return {
+        ...state,
+        modal_open: action.payload
       }
     }
 
