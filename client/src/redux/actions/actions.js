@@ -57,20 +57,24 @@ export const setModal = (value) => (dispatch) => {
   dispatch({type: MODAL_OPEN, payload: value})
 };
 
-export const searchModal = (value) => (dispatch) => {
-  dispatch({type: SEARCH_MODAL, payload: value })
-}
-
-export const createActivity = (obj) => async (dispatch) => {
+export const createActivity = (countries,data) => async (dispatch) => {
   try {
+    const { name, difficulty, duration, season } = data;
+
+    const toCreate = {
+      countries: countries,
+      name,
+      difficulty,
+      duration,
+      season,
+    }
+
     const res = await fetch('http://localhost:3001/activities', {
       method: "POST",
       headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(obj)
+      body: JSON.stringify(toCreate)
     });
-    console.log(res)
-/*     const json = await res.json();
-    dispatch({type: CREATE_ACTIVITY, payload: json}); */
+
   } catch (error) {
     console.log(error)
   }

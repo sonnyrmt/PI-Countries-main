@@ -96,18 +96,6 @@ const reducer = (state = initialState, action) => {
       }
     }
 
-    case SEARCH_MODAL: {
-      const filtered = state.filtered.filter((c) =>
-        c.name.includes(action.payload)
-      );
-      console.log(filtered)
-      
-/*       return {
-        ...state ,
-        searched_modal: filtered.slice(0,1)
-      } */
-    }
-
     case CREATE_ACTIVITY: {
       return {
         ...state,
