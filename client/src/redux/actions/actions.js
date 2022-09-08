@@ -6,8 +6,11 @@ import {
   FILTER_ORDER,
   GET_COUNTRY_BY_NAME,
   GET_COUNTRY_BY_ID,
-  MODAL_OPEN
+  MODAL_OPEN,
+  SEARCH_MODAL,
+  CREATE_ACTIVITY
 } from "./actions_vars";
+
 
 export const getAllCountries = () => async (dispatch) => {
   try {
@@ -39,17 +42,36 @@ export const getCountryByID = (id) => async (dispatch) => {
   }
 };
 
-export const filters = (filters, noFilters) => async (dispatch) => { 
+export const filters = (filters, noFilters) => (dispatch) => { 
   dispatch({type: EMPTY_FILTER });
   dispatch({type: FILTER_CONTINENT, payload: filters.continent});
   dispatch({type: FILTER_ORDER, payload: filters.order});
   
 }
 
-export const pagination = (value) => async (dispatch) => {
+export const pagination = (value) => (dispatch) => {
   dispatch({ type: PAGINATION, page: +value });
 };
 
-export const setModal = (value) => async (dispatch) => {
+export const setModal = (value) => (dispatch) => {
   dispatch({type: MODAL_OPEN, payload: value})
 };
+
+export const searchModal = (value) => (dispatch) => {
+  dispatch({type: SEARCH_MODAL, payload: value })
+}
+
+export const createActivity = (obj) => async (dispatch) => {
+  try {
+    const res = await fetch('http://localhost:3001/activities', {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(obj)
+    });
+    console.log(res)
+/*     const json = await res.json();
+    dispatch({type: CREATE_ACTIVITY, payload: json}); */
+  } catch (error) {
+    console.log(error)
+  }
+} 

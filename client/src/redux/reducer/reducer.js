@@ -1,14 +1,15 @@
-import { GET_ALL_COUNTRIES, PAGINATION, EMPTY_FILTER, FILTER_CONTINENT, FILTER_ORDER, GET_COUNTRY_BY_NAME , GET_COUNTRY_BY_ID, MODAL_OPEN } from "../actions/actions_vars";
+import { GET_ALL_COUNTRIES, PAGINATION, EMPTY_FILTER, FILTER_CONTINENT, FILTER_ORDER, GET_COUNTRY_BY_NAME , GET_COUNTRY_BY_ID, MODAL_OPEN, SEARCH_MODAL,CREATE_ACTIVITY } from "../actions/actions_vars";
 
 const initialState = {
   countries: [],
   filtered: [],
   detailed_country: [],
+  searched_modal: [],
   continent_state: "",
   order_state: "",
-  aux_page : 0,
   page: 0,
   modal_open: false,
+  activities: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -92,6 +93,25 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         modal_open: action.payload
+      }
+    }
+
+    case SEARCH_MODAL: {
+      const filtered = state.filtered.filter((c) =>
+        c.name.includes(action.payload)
+      );
+      console.log(filtered)
+      
+/*       return {
+        ...state ,
+        searched_modal: filtered.slice(0,1)
+      } */
+    }
+
+    case CREATE_ACTIVITY: {
+      return {
+        ...state,
+        activities: action.payload,
       }
     }
 

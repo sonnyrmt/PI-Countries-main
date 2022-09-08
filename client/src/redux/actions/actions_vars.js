@@ -6,4 +6,6 @@ export const FILTER = 'FILTER';
 export const EMPTY_FILTER = 'EMPTY_FILTER';
 export const FILTER_CONTINENT = 'FILTER_CONTINENT';
 export const FILTER_ORDER = 'FILTER_ORDER';
-export const MODAL_OPEN = 'MODAL_OPEN'
+export const MODAL_OPEN = 'MODAL_OPEN';
+export const SEARCH_MODAL = 'SEARCH_MODAL';
+export const CREATE_ACTIVITY = 'CREATE_ACTIVITY';

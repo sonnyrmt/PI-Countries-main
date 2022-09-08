@@ -12,13 +12,12 @@
 }
 
 .modalContainer {
-  width: 600px;
-  border-radius: 50px;
-  height: 700px;
+  width: 450px;
+  border-radius: 30px;
+  height: auto;
   background-color: #181818;
   position: fixed;
   z-index: 1;
-  border: 4px solid #3333;
   overflow: auto;
   padding: 10px;
 }
@@ -34,7 +33,7 @@
   margin-right: 15px;
   margin-top: 5px;
   border-radius: 40px;
-  padding: 10px 25px;
+  padding: 10px 20px;
   border: none;
   background-color: transparent;
   border: 1px solid #fa3535;
@@ -47,4 +46,83 @@
   transition: 0.5s;
   background-color: #fa3535;
   color: white;
+}
+
+.input_style {
+  padding: 15px 15px;
+  margin-top: 7px;
+  border: none;
+  border-radius: 20px;
+  color: #929292;
+  font-weight: 500;
+  width: 350px;
+  background-color: #3a3b3c;
+}
+
+.input_style:focus {
+  outline: none;
+}
+
+.select {
+  width: 380px; 
+  appearance: none;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+}
+
+.countryInput {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  margin-bottom: 20px;
+}
+
+.checkbox_container {
+  display: flex;
+}
+
+.checkbox label, input{
+  width: fit-content;
+  
+}
+
+.checkbox {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  background-color: #3a3b3c;
+  margin: 8px;
+  padding: 3px;
+  border-radius: 20px;
+}
+
+.submit {
+  border-radius: 40px;
+  padding: 15px;
+  width: 80%;
+  margin-bottom: 20px;
+  border: none;
+  background-color: #334eff;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.5s;
+}
+
+.submit:hover {
+  background-color: #1433fa;
+
+}
+.select option {
+  text-transform: uppercase;
 }
