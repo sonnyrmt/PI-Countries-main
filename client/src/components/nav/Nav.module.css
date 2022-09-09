@@ -5,6 +5,7 @@
   flex-direction: column;
   height: auto;
   background-color: #181818;
+
 }
 
 .btn_container {
@@ -58,8 +59,10 @@
   border: none;
   background-color: #334eff;
   color: white;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
+  font-family: 'Comfortaa', cursive;
+
 }
 
 .searchBar {
@@ -83,11 +86,12 @@
   margin: 0;
   padding: 5px 10px 10px 5px;
   color: #929292;
-  font-weight: 500;
   background-color: transparent;
   width: 170px;
   border: none;
   border-radius: 15px;
+  font-family: 'Comfortaa', cursive;
+  font-weight: 600;
 }
 
 .input_bg {
