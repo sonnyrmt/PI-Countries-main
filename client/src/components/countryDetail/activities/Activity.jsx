@@ -7,7 +7,7 @@ const Activity = (props) => {
       <div className={style.cards_container}>
         {props.activity && props.activity.length ? (
           props.activity.map((a) => (
-            <div key={a.id} className={style.activity_card}>
+            <div key={a.name} className={style.activity_card}>
               <p className={style.activity_name}>{a.name}</p>
               <div>
                 <span className={style.separator}>~</span> Difficulty:

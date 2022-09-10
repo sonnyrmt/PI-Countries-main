@@ -17,7 +17,7 @@ const Pagination = (props) => {
     <div className={style.container_navigation}>
     <div className={style.paginator_container}>
       <button className={style.pag_button} value={0} onClick={setPage}>{'<<'}</button>
-      <button className={style.pag_button} value={page-1} onClick={setPage}>{'<'}</button>
+      <button className={style.pag_button} value={page === 0 ? 0 : page-1} onClick={setPage}>{'<'}</button>
       {paginatorArr.map( i => (
         <button className={page === i ? `${style.pag_button} ${style.active}` : style.pag_button}
         value={i} key={i} onClick={setPage}>{i+1}</button>

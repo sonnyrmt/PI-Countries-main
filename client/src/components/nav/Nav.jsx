@@ -1,20 +1,18 @@
 import style from './Nav.module.css'
 import { useDispatch, useSelector } from "react-redux";
-import { filters, getCountryByName, getAllCountries, setModal } from "../../redux/actions/actions";
+import { filters, getCountryByName, getAllCountries, setModal, getActivities } from "../../redux/actions/actions";
 import { useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
+import ActivityList from './activityList/ActivityList';
+import { useEffect } from 'react';
 
 const Nav = () => {
+  const dispatch = useDispatch();
   const {pathname} = useLocation();
-  const countries = useSelector((state) => state.countries);
-  const unique = [...new Map(countries.map(item => [item.continent, item])).values()];
-  
-  const { continent_state, order_state } = useSelector((state) => state)
-
+  const {countries,continent_state, order_state, activity_state, activities} = useSelector((state) => state);
   const [continent, setCotinent] = useState(continent_state);
   const [order, setOrder] = useState(order_state);
-
-  const dispatch = useDispatch();
+  const unique = [...new Map(countries.map(item => [item.continent, item])).values()];
 
   const setFilters = (continent = "", order = "" ) => {
     setCotinent(continent);
@@ -26,11 +24,15 @@ const Nav = () => {
     }))
   }
 
+  useEffect(() => {
+    dispatch(getActivities())
+  },[dispatch, activity_state]);
+
   const handleSearch = (e) => {
     if(e.target.value) {
       dispatch(getCountryByName(e.target.value))
     } else {
-      if(continent == "" && order == "") {
+      if(continent === "" && order === "") {
         dispatch(getAllCountries());
       } else {
         setFilters(continent, order);
@@ -85,9 +87,9 @@ const Nav = () => {
               </select>
             </div>
             <div className={style.labelAndSelect}>
-              <label htmlFor="title-activity">Activity Filter</label>
-              <select className={style.selectInput} name="activities" id="activities">
-                <option value="">No activities</option>
+              <label htmlFor="title-activity" >Activity Filter</label>
+              <select className={style.selectInput}  name="activities" id="activities">
+                <ActivityList act={activities}/>
               </select>
             </div>
           </div>

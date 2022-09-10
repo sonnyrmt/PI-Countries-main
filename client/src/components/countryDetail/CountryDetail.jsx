@@ -11,7 +11,6 @@ const CountryDetail = () => {
   const {
     img_url,
     name,
-    ID,
     continent,
     capital,
     sub_region,

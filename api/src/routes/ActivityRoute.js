@@ -2,6 +2,12 @@ const { Router } = require("express");
 const router = Router();
 const { Activity, Country } = require('../db.js');
 
+router.get('/', async (req,res) => {
+  const activities = await Activity.findAll()
+  res.json(activities)
+  
+})
+
 router.post('/', async (req,res) => {
   const { countries , name , difficulty, duration, season} = req.body;
 
@@ -16,7 +22,7 @@ router.post('/', async (req,res) => {
   const promises = posts.map( p => p.createActivity({name,difficulty,duration,season}));
   await Promise.all(promises);
 
-  res.json(`Activity created and associated to countries`);
+  res.json({msg:`Activity created and associated to countries`});
 });
 
 module.exports = router;

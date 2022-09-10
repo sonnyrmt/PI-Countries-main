@@ -7,7 +7,6 @@ import {
   GET_COUNTRY_BY_NAME,
   GET_COUNTRY_BY_ID,
   MODAL_OPEN,
-  SEARCH_MODAL,
   CREATE_ACTIVITY
 } from "./actions_vars";
 
@@ -74,8 +73,19 @@ export const createActivity = (countries,data) => async (dispatch) => {
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(toCreate)
     });
+    const json = await res.json()
+
+    dispatch({type: CREATE_ACTIVITY, payload: json})
+
+    return json;
 
   } catch (error) {
     console.log(error)
   }
 } 
+
+export const getActivities = () => async (dispatch)  => {
+  const res = await fetch('http://localhost:3001/activities')
+  const json = await res.json();
+  dispatch({type: 'GET_ACTIVITIES', payload: json})
+}

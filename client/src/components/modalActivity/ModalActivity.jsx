@@ -12,6 +12,7 @@ export const validateInputs = (input) => {
   if(name.length < 2 && name !== "") errors.name = 'Min length almost to be two';
 
   if(difficulty !== "" && isNaN(parseInt(difficulty))) errors.difficulty = 'Difficulty need to be number'
+  if(difficulty !== "" && difficulty.length > 1) errors.difficulty = 'Min 1 and Max 5'
   if(parseInt(difficulty) < 1) errors.difficulty = 'Min difficulty is one';
   if(parseInt(difficulty) > 5) errors.difficulty = 'Max difficulty is five';
 
@@ -19,6 +20,8 @@ export const validateInputs = (input) => {
   if(duration.length && duration[2] !== ':') errors.duration = 'The format is hh:mm'
   if(duration.length && !duration[3]) errors.duration = 'The format is hh:mm';
   if(duration.length && !duration[4]) errors.duration = 'The format is hh:mm';
+  if(parseInt(duration[0]+duration[1]) > 24) errors.duration = 'Max hours is 24'
+  if(parseInt(duration[3]+duration[4]) > 59) errors.duration = 'Max minutes is 59'
   if(duration[0] && isNaN(parseInt(duration[0]))) errors.duration = `"${duration[0]}" need to be a number`;
   if(duration[1] && isNaN(parseInt(duration[1]))) errors.duration = `"${duration[1]}" need to be a number`;
   if(duration[3] && isNaN(parseInt(duration[3]))) errors.duration = `"${duration[3]}" need to be a number`;
@@ -50,6 +53,7 @@ const ModalActivity = () => {
   const [errors, setErrors] = useState({});
   const [isDisabled, setIsDisabled] = useState(true)
   const [limitCountry,setLimitCountry] = useState({});
+  const [done, setDone] = useState("");
   const { filtered } = useSelector((state) => state);
 
   useEffect(() => {
@@ -64,7 +68,11 @@ const ModalActivity = () => {
       }
     }
 
-  }, [limitCountry, errors]);
+    return () => {
+      setIsDisabled(true);
+    }
+
+  }, [countries, input ,limitCountry, errors]);
   
 
   const handleClose = () => {
@@ -108,13 +116,22 @@ const ModalActivity = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('asd')
     dispatch(createActivity(countries.countries ,input))
+     .then( res => setDone(res.msg))
+     
+     setTimeout(() => {
+      setInput({
+        name: '',
+        difficulty: '',
+        duration: '',
+      })
+      setDone("");
+     }, 3500);
   }
 
   return (
     <div className={style.modalBG}>
-      <form onSubmit={handleSubmit}  className={style.modalContainer}>
+      <form onSubmit={handleSubmit} className={style.modalContainer}>
         <div className={style.topBtn}>
           <button onClick={handleClose}>Close</button>
         </div>
@@ -133,17 +150,17 @@ const ModalActivity = () => {
             {limitCountry.countries &&  <Error timedError={limitCountry.countries} />}
           </div>
           <div className={style.countryInput}>
-            <label htmlFor="">Name :</label>
+            <label htmlFor="">Activity Name :</label>
             <input className={style.input_style}  value={input.name}  onChange={handleInputChange} name="name" type="text" placeholder="Football, Basket" />
             {errors.name ? <Error error={errors.name}/> : null}
           </div>
           <div className={style.countryInput}>
-            <label htmlFor="">Difficulty :</label>
+            <label htmlFor="">Difficulty : <span className={style.aclaration}>1 - 5</span></label>
             <input className={style.input_style} value={input.difficulty} onChange={handleInputChange} name="difficulty" type="text" min={1} max={5}  placeholder="Set difficulty" />
             {errors.difficulty ? <Error error={errors.difficulty}/> : null}
           </div>
           <div className={style.countryInput}>
-            <label htmlFor="">Duration :</label>
+            <label htmlFor="">Duration : <span className={style.aclaration}>format hh:mm</span></label>
             <input className={`${style.input_style} ${style.time}`}  value={input.duration} placeholder='Set duration'  onChange={handleInputChange} name="duration" type="text" />
             {errors.duration ? <Error error={errors.duration}/> : null}
           </div>
@@ -173,7 +190,7 @@ const ModalActivity = () => {
                 <span onClick={handleDelete} id={index}  key={name} >{name}</span>
             )): null}
           </div>
-          <button className={style.submit} disabled={isDisabled} type="submit">{isDisabled ? 'Rellene todos los campos' : 'Submit'}</button>
+          <button className={done ? `${style.submit} ${style.done}` : style.submit} disabled={isDisabled} type="submit">{done ? done : 'Submit'}</button>
         </div>
       </form>
     </div>

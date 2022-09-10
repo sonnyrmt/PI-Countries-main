@@ -1,4 +1,4 @@
-import { GET_ALL_COUNTRIES, PAGINATION, EMPTY_FILTER, FILTER_CONTINENT, FILTER_ORDER, GET_COUNTRY_BY_NAME , GET_COUNTRY_BY_ID, MODAL_OPEN, SEARCH_MODAL,CREATE_ACTIVITY } from "../actions/actions_vars";
+import { GET_ALL_COUNTRIES, PAGINATION, EMPTY_FILTER, FILTER_CONTINENT, FILTER_ORDER, GET_COUNTRY_BY_NAME , GET_COUNTRY_BY_ID, MODAL_OPEN,CREATE_ACTIVITY } from "../actions/actions_vars";
 
 const initialState = {
   countries: [],
@@ -9,6 +9,7 @@ const initialState = {
   order_state: "",
   page: 0,
   modal_open: false,
+  activity_state: {},
   activities: []
 };
 
@@ -97,9 +98,17 @@ const reducer = (state = initialState, action) => {
     }
 
     case CREATE_ACTIVITY: {
+
       return {
         ...state,
-        activities: action.payload,
+        activity_state: action.payload,
+      }
+    }
+
+    case 'GET_ACTIVITIES': {
+      return {
+        ...state,
+        activities: action.payload
       }
     }
 
