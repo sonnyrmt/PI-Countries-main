@@ -10,6 +10,8 @@ router.get('/', async (req,res) => {
 
 router.post('/', async (req,res) => {
   const { countries , name , difficulty, duration, season} = req.body;
+  const capitalized = name[0].toUpperCase() + name.substring(1).toLowerCase(); 
+  console.log(capitalized)
 
   const posts = await Promise.all(
     countries.map( async (code) => {
@@ -19,7 +21,7 @@ router.post('/', async (req,res) => {
     })
   );
 
-  const promises = posts.map( p => p.createActivity({name,difficulty,duration,season}));
+  const promises = posts.map( p => p.createActivity({name: capitalized,difficulty,duration,season}));
   await Promise.all(promises);
 
   res.json({msg:`Activity created and associated to countries`});

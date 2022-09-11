@@ -7,13 +7,13 @@ import style from "./Home.module.css";
 import Pagination from "./pagination/Pagination";
 
 const Home = () => {
-  const { page, filtered, activity_state } = useSelector((state) => state);
+  const { page, filtered, created } = useSelector((state) => state);
   const { pathname } = useLocation();
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllCountries());
-  }, [dispatch, pathname, activity_state]);
+  }, [dispatch, pathname, created]);
 
   const offset = page * 15;
   const limit = offset + 15;

@@ -9,43 +9,51 @@ import { useEffect } from 'react';
 const Nav = () => {
   const dispatch = useDispatch();
   const {pathname} = useLocation();
-  const {countries,continent_state, order_state, activity_state, activities} = useSelector((state) => state);
+  const {countries,continent_state, order_state, created, activity_state, activities} = useSelector((state) => state);
   const [continent, setCotinent] = useState(continent_state);
+  const [activity, setActivity] = useState(activity_state);
   const [order, setOrder] = useState(order_state);
+
   const unique = [...new Map(countries.map(item => [item.continent, item])).values()];
 
-  const setFilters = (continent = "", order = "" ) => {
+  const setFilters = (continent = "", order = "" , activity = "") => {
     setCotinent(continent);
     setOrder(order);
+    setActivity()
 
     dispatch(filters({
       continent,
       order,
+      activity,
     }))
   }
 
   useEffect(() => {
     dispatch(getActivities())
-  },[dispatch, activity_state]);
+  },[dispatch, created]);
 
   const handleSearch = (e) => {
     if(e.target.value) {
       dispatch(getCountryByName(e.target.value))
     } else {
-      if(continent === "" && order === "") {
+      if(continent === "" && order === "", activity === "") {
         dispatch(getAllCountries());
       } else {
-        setFilters(continent, order);
+        setFilters(continent, order, activity);
       }
     }
   };
 
   const handleContinent = (e) => {
-    setFilters(e.target.value, order)
+    setFilters(e.target.value, order, activity)
   };
 
   const handleOrder = (e) => {
-    setFilters(continent, e.target.value )
+    setFilters(continent, e.target.value, activity )
+  }
+
+  const handleActivitySearch = (e) => {
+    setFilters(continent, order, e.target.value)
   }
 
   const handleActivity = () => {
@@ -88,7 +96,7 @@ const Nav = () => {
             </div>
             <div className={style.labelAndSelect}>
               <label htmlFor="title-activity" >Activity Filter</label>
-              <select className={style.selectInput}  name="activities" id="activities">
+              <select className={style.selectInput} onChange={handleActivitySearch}  name="activities" id="activities">
                 <ActivityList act={activities}/>
               </select>
             </div>

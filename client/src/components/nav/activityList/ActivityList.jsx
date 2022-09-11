@@ -1,17 +1,21 @@
-
-
 const ActivityList = (props) => {
+
+  const unique = [];
+  props.act.filter( a => {
+    const isDuplicate = unique.includes(a.name)
+    if(!isDuplicate) unique.push(a.name)
+  })
+
   return (
     <>
-      { props.act && !props.act.length ? 
+      { unique && !unique.length ? 
         <option value="" hidden>No activities</option>
         : <option value="" hidden>Choose Activity</option>
       }
         <option value="">Reset</option>
-      { props.act && props.act.map( a => {
-        const uppercase = a.name[0].toUpperCase() + a.name.substring(1);
+      { unique && unique.map( (a,i) => {
         return (
-          <option key={a.ID} name="activity" value={uppercase}>{uppercase}</option>
+          <option key={i} name="activity" value={a}>{a}</option>
         )
       })
       }

@@ -7,7 +7,9 @@ import {
   GET_COUNTRY_BY_NAME,
   GET_COUNTRY_BY_ID,
   MODAL_OPEN,
-  CREATE_ACTIVITY
+  CREATE_ACTIVITY,
+  GET_ACTIVITIES,
+  FILTER_ACTIVITY,
 } from "./actions_vars";
 
 
@@ -41,10 +43,11 @@ export const getCountryByID = (id) => async (dispatch) => {
   }
 };
 
-export const filters = (filters, noFilters) => (dispatch) => { 
+export const filters = (filters) => (dispatch) => { 
   dispatch({type: EMPTY_FILTER });
   dispatch({type: FILTER_CONTINENT, payload: filters.continent});
   dispatch({type: FILTER_ORDER, payload: filters.order});
+  dispatch({type: FILTER_ACTIVITY, payload: filters.activity})
   
 }
 
@@ -87,5 +90,5 @@ export const createActivity = (countries,data) => async (dispatch) => {
 export const getActivities = () => async (dispatch)  => {
   const res = await fetch('http://localhost:3001/activities')
   const json = await res.json();
-  dispatch({type: 'GET_ACTIVITIES', payload: json})
+  dispatch({type: GET_ACTIVITIES, payload: json})
 }

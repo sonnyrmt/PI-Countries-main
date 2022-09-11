@@ -1,4 +1,16 @@
-import { GET_ALL_COUNTRIES, PAGINATION, EMPTY_FILTER, FILTER_CONTINENT, FILTER_ORDER, GET_COUNTRY_BY_NAME , GET_COUNTRY_BY_ID, MODAL_OPEN,CREATE_ACTIVITY } from "../actions/actions_vars";
+import { 
+  GET_ALL_COUNTRIES, 
+  PAGINATION,
+  EMPTY_FILTER,
+  FILTER_CONTINENT,
+  FILTER_ORDER,
+  GET_COUNTRY_BY_NAME ,
+  GET_COUNTRY_BY_ID,
+  MODAL_OPEN,
+  CREATE_ACTIVITY,
+  GET_ACTIVITIES,
+  FILTER_ACTIVITY
+ } from "../actions/actions_vars";
 
 const initialState = {
   countries: [],
@@ -6,11 +18,12 @@ const initialState = {
   detailed_country: [],
   searched_modal: [],
   continent_state: "",
+  activity_state: "",
   order_state: "",
   page: 0,
   modal_open: false,
-  activity_state: {},
-  activities: []
+  created: "",
+  activities: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -48,7 +61,6 @@ const reducer = (state = initialState, action) => {
         ...state,
         filtered: filtered.length ? filtered : 'error',
         continent_state: action.payload,
-        aux_page: state.page,
       };
     }
 
@@ -101,14 +113,23 @@ const reducer = (state = initialState, action) => {
 
       return {
         ...state,
-        activity_state: action.payload,
+        created: action.payload,
       }
     }
 
-    case 'GET_ACTIVITIES': {
+    case GET_ACTIVITIES: {
       return {
         ...state,
         activities: action.payload
+      }
+    }
+
+    case FILTER_ACTIVITY: {
+      const filtered = state.filtered.filter((c)=> c.Activities.some((a)=> a.name === action.payload))
+      return {
+        ...state,
+        filtered: action.payload !== "" ? filtered : state.filtered,
+        activity_state: action.payload,
       }
     }
 
