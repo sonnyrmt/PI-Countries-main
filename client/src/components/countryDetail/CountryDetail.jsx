@@ -21,6 +21,7 @@ const CountryDetail = () => {
     Activities,
     independent,
   } = useSelector((state) => state.detailed_country);
+  const {created} = useSelector(state => state)
 
   const cleanLanguages = [];
   let currencyName;
@@ -45,7 +46,7 @@ const CountryDetail = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCountryByID(id));
-  }, [dispatch, id]);
+  }, [dispatch, id,created]);
 
   return (
     <div className={style.country_container}>

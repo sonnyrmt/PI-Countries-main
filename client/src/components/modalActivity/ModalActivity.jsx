@@ -2,6 +2,7 @@ import style from "./ModalActivity.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setModal, createActivity } from "../../redux/actions/actions";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import Error from "./errors/Error"
 import { useEffect } from "react";
 
@@ -10,6 +11,7 @@ export const validateInputs = (input) => {
   let errors = {};
   if(name.length > 15 && name !== "") errors.name = 'Max length exceeded';
   if(name.length < 2 && name !== "") errors.name = 'Min length almost to be two';
+
 
   if(difficulty !== "" && isNaN(parseInt(difficulty))) errors.difficulty = 'Difficulty need to be number'
   if(difficulty !== "" && difficulty.length > 1) errors.difficulty = 'Min 1 and Max 5'
@@ -54,7 +56,9 @@ const ModalActivity = () => {
   const [isDisabled, setIsDisabled] = useState(true)
   const [limitCountry,setLimitCountry] = useState({});
   const [done, setDone] = useState("");
-  const { filtered } = useSelector((state) => state);
+  const { filtered, detailed_country } = useSelector((state) => state);
+  const { pathname } = useLocation();
+  const countryList=  pathname === `/countries/${detailed_country.ID}` ? [detailed_country] : filtered
 
   useEffect(() => {
 
@@ -139,8 +143,8 @@ const ModalActivity = () => {
           <div className={style.countryInput}>
             <label htmlFor="">Country :</label>
             <select onChange={handleCountry} className={`${style.input_style} ${style.select}`}>
-              <option value="">Choose a country</option>
-              {filtered.length && filtered.map( c => {
+              <option value="" hidden>Choose a country</option>
+              {countryList.length && countryList.map( c => {
                 const uppercase = c.name[0].toUpperCase() + c.name.substring(1);
                 return ( 
                   <option key={c.ID} value={c.ID} name={uppercase} id={uppercase}>{uppercase}</option>

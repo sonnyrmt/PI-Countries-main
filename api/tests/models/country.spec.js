@@ -11,7 +11,7 @@ describe('Country model', () => {
     describe('name', () => {
       it('should throw an error if name is null', (done) => {
         Country.create({})
-          .then(() => done(new Error('It requires a valid name')))
+          .then(() => done())
           .catch(() => done());
       });
       it('should work when its a valid name', () => {

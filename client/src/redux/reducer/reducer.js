@@ -16,7 +16,6 @@ const initialState = {
   countries: [],
   filtered: [],
   detailed_country: [],
-  searched_modal: [],
   continent_state: "",
   activity_state: "",
   order_state: "",

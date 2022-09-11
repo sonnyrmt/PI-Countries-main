@@ -5,6 +5,7 @@ import { getAllCountries } from "../../redux/actions/actions";
 import Card from "./cards/Card";
 import style from "./Home.module.css";
 import Pagination from "./pagination/Pagination";
+import NoCountry from "./noCountry/NoCountry";
 
 const Home = () => {
   const { page, filtered, created } = useSelector((state) => state);
@@ -36,7 +37,7 @@ const Home = () => {
           />
         ))
       ) : (
-        <div>no hay pais</div>
+        <NoCountry />
       )}
       {current.length < 15 ? null : (
         <Pagination page={page} total={filtered.length} />
