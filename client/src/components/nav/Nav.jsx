@@ -36,7 +36,7 @@ const Nav = () => {
     if(e.target.value) {
       dispatch(getCountryByName(e.target.value))
     } else {
-      if(continent === "" && order === "", activity === "") {
+      if(continent === "" && order === "" && activity === "") {
         dispatch(getAllCountries());
       } else {
         setFilters(continent, order, activity);

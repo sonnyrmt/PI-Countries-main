@@ -8,7 +8,7 @@ const ActivityList = (props) => {
 
   return (
     <>
-      { unique && !unique.length ? 
+      { unique && !unique.length ?
         <option value="" hidden>No activities</option>
         : <option value="" hidden>Choose Activity</option>
       }
@@ -20,7 +20,6 @@ const ActivityList = (props) => {
       })
       }
     </>
-
     )
 }
 

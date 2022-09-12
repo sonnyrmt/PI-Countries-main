@@ -6,9 +6,10 @@ import Home from "./components/home/Home";
 import CountryDetail from "./components/countryDetail/CountryDetail";
 import { useSelector } from "react-redux";
 import ModalActivity from "./components/modalActivity/ModalActivity";
+import NotFound from "./components/NotFound/NotFound"
 
 function App() {
-  const { modal_open } = useSelector((state) => state);
+  const { modal_open, detailed_country } = useSelector((state) => state);
 
   return (
     <div className="App">
@@ -21,9 +22,14 @@ function App() {
           <Nav />
           <Home />
         </Route>
-        <Route path="/countries/:id">
-          <Nav />
-          <CountryDetail />
+        {!detailed_country.msg ? (
+          <Route path="/countries/:id">
+            <Nav />
+            <CountryDetail />
+          </Route>
+        ) : (<NotFound/>)}
+        <Route path="*">
+          <NotFound/>
         </Route>
       </Switch>
     </div>

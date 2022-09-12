@@ -4,14 +4,12 @@ const { Activity, Country } = require('../db.js');
 
 router.get('/', async (req,res) => {
   const activities = await Activity.findAll()
-  res.json(activities)
-  
+  res.status(200).json(activities)
 })
 
 router.post('/', async (req,res) => {
   const { countries , name , difficulty, duration, season} = req.body;
-  const capitalized = name[0].toUpperCase() + name.substring(1).toLowerCase(); 
-  console.log(capitalized)
+  const capitalized = name[0].toUpperCase() + name.substring(1).toLowerCase();
 
   const posts = await Promise.all(
     countries.map( async (code) => {
@@ -24,7 +22,7 @@ router.post('/', async (req,res) => {
   const promises = posts.map( p => p.createActivity({name: capitalized,difficulty,duration,season}));
   await Promise.all(promises);
 
-  res.json({msg:`Activity created and associated to countries`});
+  res.status(200).json({msg:`Activity created and associated to countries`});
 });
 
 module.exports = router;

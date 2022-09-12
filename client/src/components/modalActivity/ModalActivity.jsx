@@ -18,24 +18,25 @@ export const validateInputs = (input) => {
   if(parseInt(difficulty) < 1) errors.difficulty = 'Min difficulty is one';
   if(parseInt(difficulty) > 5) errors.difficulty = 'Max difficulty is five';
 
-  if(duration.length > 5) errors.duration = 'Max length exceeded'; 
+  if(duration.length > 5) errors.duration = 'Max length exceeded';
   if(duration.length && duration[2] !== ':') errors.duration = 'The format is hh:mm'
   if(duration.length && !duration[3]) errors.duration = 'The format is hh:mm';
   if(duration.length && !duration[4]) errors.duration = 'The format is hh:mm';
   if(parseInt(duration[0]+duration[1]) > 24) errors.duration = 'Max hours is 24'
   if(parseInt(duration[3]+duration[4]) > 59) errors.duration = 'Max minutes is 59'
+  if(duration[0]+duration[1] === '00' && parseInt(duration[3]+duration[4]) < 30) errors.duration = 'Min minutes is 30'
   if(duration[0] && isNaN(parseInt(duration[0]))) errors.duration = `"${duration[0]}" need to be a number`;
   if(duration[1] && isNaN(parseInt(duration[1]))) errors.duration = `"${duration[1]}" need to be a number`;
   if(duration[3] && isNaN(parseInt(duration[3]))) errors.duration = `"${duration[3]}" need to be a number`;
   if(duration[4] && isNaN(parseInt(duration[4]))) errors.duration = `"${duration[4]}" need to be a number`;
-  
+
   return errors;
 }
 
 export const validateCountries = (input) => {
   const {countries} = input;
   let errors = {};
-  
+
   if(countries.length > 3) errors.countries = 'Cant add more than three';
   return errors;
 }
@@ -64,7 +65,7 @@ const ModalActivity = () => {
 
     if(errors.name || errors.difficulty || errors.duration) {
       setIsDisabled(true);
-    } else { 
+    } else {
       if(!countries.names.length || !input.name.length || !input.difficulty.length || !input.duration.length || !input.season.length) {
         setIsDisabled(true);
       } else {
@@ -77,7 +78,7 @@ const ModalActivity = () => {
     }
 
   }, [countries, input ,limitCountry, errors]);
-  
+
 
   const handleClose = () => {
     dispatch(setModal(false));
@@ -122,7 +123,7 @@ const ModalActivity = () => {
     e.preventDefault();
     dispatch(createActivity(countries.countries ,input))
      .then( res => setDone(res.msg))
-     
+
      setTimeout(() => {
       setInput({
         name: '',
@@ -146,7 +147,7 @@ const ModalActivity = () => {
               <option value="" hidden>Choose a country</option>
               {countryList.length && countryList.map( c => {
                 const uppercase = c.name[0].toUpperCase() + c.name.substring(1);
-                return ( 
+                return (
                   <option key={c.ID} value={c.ID} name={uppercase} id={uppercase}>{uppercase}</option>
                 )
               })}

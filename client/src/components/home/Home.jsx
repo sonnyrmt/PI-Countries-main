@@ -20,12 +20,10 @@ const Home = () => {
   const limit = offset + 15;
   let current = filtered.slice(offset, limit);
 
-  /*   if(!current.length) current = filtered.slice((0),limit); */
-
   return (
     <div className={style.countries}>
       {current.length ? (
-        current.map((c) => (
+        current.map( c => (
           <Card
             key={c.ID}
             id={c.ID}

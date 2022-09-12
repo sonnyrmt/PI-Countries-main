@@ -7,7 +7,7 @@ const getCountriesAPI = async () => {
   try {
     const response = await fetch(`${URL_ALL}`);
     const allCountries = await response.json();
-    
+
     const countriesToDB = allCountries.map(c => {
       return {
         ID: c.cca3,
@@ -19,12 +19,12 @@ const getCountriesAPI = async () => {
         area: Math.round(c.area),
         population: c.population,
         currencies: c.currencies === undefined ? { ANY: {} } : c.currencies,
-        flag: c.flag === undefined ? 'null' : c.flag,
+        flag: c.flag === undefined ? 'No flag' : c.flag,
         languages: c.languages === undefined ? null : c.languages,
-        independent: c.independent === undefined ? null : c.independent 
+        independent: c.independent === undefined ? null : c.independent
       };
     });
-  
+
     countriesToDB.map( c => {
       Country.findOrCreate({
         where: {
@@ -43,7 +43,7 @@ const getCountriesAPI = async () => {
         }
       })
     });
-  
+
     console.log('synchronized db')
   } catch (error) {
     console.log(error)

@@ -2,11 +2,15 @@
 const { expect } = require('chai');
 const session = require('supertest-session');
 const app = require('../../src/app.js');
-const { Country, conn } = require('../../src/db.js');
+const { Country,Activity , conn } = require('../../src/db.js');
 
 const agent = session(app);
-const country = {
-  name: 'Argentina',
+const activity = {
+  countries: ["ARG"],
+  name: 'Voley',
+  difficulty: 5,
+  duration: 1,
+  season: "Verano",
 };
 
 describe('Country routes', () => {
