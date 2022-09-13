@@ -13,6 +13,17 @@
   font-family: 'cocogoose';
   font-size: 100px;
   z-index: 2;
+  margin-bottom: 0;
+}
+
+.parrafal {
+  font-size: 25px;
+  font-weight: bolder;
+  background-color: rgba(230, 230, 230, 0.144);
+  margin-top: 10px;
+  padding: 10px;
+
+  border-radius: 20px;
 }
 
 mark {
@@ -45,7 +56,8 @@ h2 {
   text-decoration: none;
   width: fit-content;
   background-color: #334EFF;
-  padding: 10px 25px;
+  padding: 10px 45px;
+  margin-top: 10px;
   border-radius: 10px;
   cursor: pointer;
   color: white;
