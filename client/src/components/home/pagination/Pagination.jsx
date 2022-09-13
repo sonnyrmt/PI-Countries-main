@@ -14,16 +14,17 @@ const Pagination = (props) => {
   const setPage = (e) => {
     dispatch(pagination(e.target.value));
   }
+
   return (
     <div className={style.container_navigation}>
     <div className={style.paginator_container}>
       <button className={style.pag_button} value={0} onClick={setPage}>{'|<'}</button>
-      <button className={style.pag_button} value={page === 0 ? 0 : page-1} onClick={setPage}>{'<'}</button>
+      <button disabled={page === 0}  className={style.pag_button} value={page-1} onClick={setPage}>{'<'}</button>
       {paginatorArr.map( i => (
         <button className={page === i ? `${style.pag_button} ${style.active}` : style.pag_button}
         value={i} key={i} onClick={setPage}>{i+1}</button>
       ))}
-      <button className={style.pag_button} value={paginatorArr.length <= 1 ? 0 : page+1} onClick={setPage}>{'>'}</button>
+      <button disabled={page === 16 || paginatorArr.length <= 1}  className={style.pag_button} value={page+1} onClick={setPage}>{'>'}</button>
       <button className={style.pag_button} value={numberPages-1} onClick={setPage}>{'>|'}</button>
     </div>
     </div>

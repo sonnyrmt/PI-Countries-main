@@ -18,6 +18,8 @@ const Home = () => {
   const limit = offset + 15;
   let current = filtered.slice(offset, limit);
 
+  if(current.length < 10) current = filtered.slice(0,limit)
+
   return (
     <div className={style.countries}>
       {current.length ? (
