@@ -1,11 +1,9 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
-import { getAllCountries } from "../../redux/actions/actions";
-import Card from "./cards/Card";
+import { getAllCountries } from "../../redux";
+import {Card, Pagination, NoCountry} from "./index"
 import style from "./Home.module.css";
-import Pagination from "./pagination/Pagination";
-import NoCountry from "./noCountry/NoCountry";
 
 const Home = () => {
   const { page, filtered, created } = useSelector((state) => state);

@@ -1,10 +1,10 @@
 import style from './Nav.module.css'
 import { useDispatch, useSelector } from "react-redux";
-import { filters, getCountryByName, getAllCountries, setModal, getActivities } from "../../redux/actions/actions";
+import { filters, getCountryByName, getAllCountries, setModal, getActivities } from "../../redux";
 import { useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
-import ActivityList from './activityList/ActivityList';
 import { useEffect } from 'react';
+import ActivityList from './activityList/ActivityList';
 
 const Nav = () => {
   const dispatch = useDispatch();
@@ -68,13 +68,13 @@ const Nav = () => {
           <Link className={style.link} to={'/countries'}>
             <h1 className={style.title}>Maps.pi</h1>
           </Link>
-          {pathname === '/countries' || pathname === '/countries/' ?
+          {pathname === '/countries' || pathname === '/countries/' &&
           <input placeholder='Search..' className={style.searchBar} type="text" onChange={handleSearch}/>
-          : null }
+           }
         </div>
         <button className={style.activity} onClick={handleActivity}>Create Activity</button>
       </div>
-      {pathname === '/countries' ?
+      {pathname === '/countries' &&
         <div className={style.input_container}>
           <div className={style.input_bg}>
             <div className={style.labelAndSelect}>
@@ -102,7 +102,7 @@ const Nav = () => {
             </div>
           </div>
         </div>
-      : null }
+      }
     </nav>
   );
 };

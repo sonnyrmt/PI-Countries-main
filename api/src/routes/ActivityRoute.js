@@ -2,6 +2,7 @@ const { Router } = require("express");
 const router = Router();
 const { Activity, Country } = require('../db.js');
 
+
 router.get('/', async (req,res) => {
   const activities = await Activity.findAll()
   res.status(200).json(activities)

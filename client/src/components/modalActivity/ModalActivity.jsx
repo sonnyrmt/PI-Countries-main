@@ -1,6 +1,6 @@
 import style from "./ModalActivity.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { setModal, createActivity } from "../../redux/actions/actions";
+import { setModal, createActivity } from "../../redux";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import Error from "./errors/Error"

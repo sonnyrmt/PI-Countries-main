@@ -1,4 +1,4 @@
-import { pagination } from "../../../redux/actions/actions";
+import { pagination } from "../../../redux";
 import { useDispatch } from "react-redux";
 import style from './Pagination.module.css'
 
@@ -7,7 +7,7 @@ const Pagination = (props) => {
   const dispatch = useDispatch();
 
   const numberPages = Math.ceil((total/15));
-  
+
   const paginatorArr = [...Array(numberPages).keys()];
 
   const setPage = (e) => {

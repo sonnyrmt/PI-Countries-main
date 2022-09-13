@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getCountryByID } from "../../redux/actions/actions";
+import { getCountryByID } from "../../redux";
 import style from "./CountryDetail.module.css";
 import Activity from "./activities/Activity";
-import checkmark from "../../assets/img/checkmark.png";
-import crossmark from "../../assets/img/crossmark.png";
+import checkmark from "../../assets/img/checkmark.webp";
+import crossmark from "../../assets/img/crossmark.webp";
 
 const CountryDetail = () => {
   const {
