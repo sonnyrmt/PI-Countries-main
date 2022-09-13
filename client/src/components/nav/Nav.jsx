@@ -68,9 +68,9 @@ const Nav = () => {
           <Link className={style.link} to={'/countries'}>
             <h1 className={style.title}>Maps.pi</h1>
           </Link>
-          {pathname === '/countries' || pathname === '/countries/' &&
-          <input placeholder='Search..' className={style.searchBar} type="text" onChange={handleSearch}/>
-           }
+          {pathname === '/countries' || pathname === '/countries/' ?
+            <input placeholder='Search..' className={style.searchBar} type="text" onChange={handleSearch}/>
+          : null }
         </div>
         <button className={style.activity} onClick={handleActivity}>Create Activity</button>
       </div>

@@ -35,9 +35,7 @@ const Home = () => {
       ) : (
         <NoCountry />
       )}
-      {current.length < 15 ? null : (
         <Pagination page={page} total={filtered.length} />
-      )}
     </div>
   );
 };

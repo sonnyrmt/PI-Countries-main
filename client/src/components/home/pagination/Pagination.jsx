@@ -23,7 +23,7 @@ const Pagination = (props) => {
         <button className={page === i ? `${style.pag_button} ${style.active}` : style.pag_button}
         value={i} key={i} onClick={setPage}>{i+1}</button>
       ))}
-      <button className={style.pag_button} value={page+1} onClick={setPage}>{'>'}</button>
+      <button className={style.pag_button} value={paginatorArr.length <= 1 ? 0 : page+1} onClick={setPage}>{'>'}</button>
       <button className={style.pag_button} value={numberPages-1} onClick={setPage}>{'>|'}</button>
     </div>
     </div>
