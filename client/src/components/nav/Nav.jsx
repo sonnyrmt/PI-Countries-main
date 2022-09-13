@@ -74,7 +74,7 @@ const Nav = () => {
         </div>
         <button className={style.activity} onClick={handleActivity}>Create Activity</button>
       </div>
-      {pathname === '/countries' &&
+      {pathname === '/countries' || pathname === '/countries/' ?
         <div className={style.input_container}>
           <div className={style.input_bg}>
             <div className={style.labelAndSelect}>
@@ -102,7 +102,7 @@ const Nav = () => {
             </div>
           </div>
         </div>
-      }
+      : null }
     </nav>
   );
 };
