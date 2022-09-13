@@ -24,12 +24,12 @@ function App() {
           <Nav />
           <Home />
         </Route>
-        {!detailed_country.msg ? (
+        {!detailed_country.msg && (
           <Route path="/countries/:id">
             <Nav />
             <CountryDetail />
           </Route>
-        ) : (<NotFound/>)}
+        )}
         <Route path="*">
           <NotFound/>
         </Route>

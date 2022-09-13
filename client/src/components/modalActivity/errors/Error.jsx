@@ -18,7 +18,7 @@ const Error = (props) => {
 
   if(props.timedError) {
     if(!visible) return null;
-  
+
     return (
       <span className={style.error}>{props.timedError}</span>
     )
