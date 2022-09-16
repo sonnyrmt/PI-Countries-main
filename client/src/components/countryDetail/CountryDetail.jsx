@@ -21,6 +21,7 @@ const CountryDetail = () => {
     Activities,
     independent,
   } = useSelector((state) => state.detailed_country);
+  const detailedCountry = useSelector(state => state.detailedCountry)
   const {created} = useSelector(state => state)
 
   const cleanLanguages = [];
@@ -46,6 +47,11 @@ const CountryDetail = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCountryByID(id));
+
+    return() => {
+      dispatch(getCountryByID(""))
+    }
+
   }, [dispatch, id,created]);
 
   return (
