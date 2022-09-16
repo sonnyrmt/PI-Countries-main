@@ -34,9 +34,13 @@ export const getCountryByName = (name) => async (dispatch) => {
 
 export const getCountryByID = (id) => async (dispatch) => {
   try {
+    if(id !== "") {
     const res = await fetch(`http://localhost:3001/countries/${id}`);
     const json = await res.json();
     dispatch({ type: GET_COUNTRY_BY_ID, payload: json });
+    } else {
+      dispatch({type: GET_COUNTRY_BY_ID, payload: id})
+    }
   } catch (error) {
     console.log(error);
   }
